@@ -1,0 +1,85 @@
+---
+title: "What is Kodosumi?"
+description: "Runtime environment for managing and executing agentic services at scale"
+---
+
+export const GitHubReadme = () => {
+  const [content, setContent] = React.useState('Loading content from GitHub...');
+  const [loading, setLoading] = React.useState(true);
+
+React.useEffect(() => {
+const fetchReadme = async () => {
+try {
+const response = await fetch('https://api.github.com/repos/masumi-network/kodosumi/readme');
+const data = await response.json();
+const decodedContent = atob(data.content);
+setContent(decodedContent);
+setLoading(false);
+} catch (error) {
+setContent('Error loading content from GitHub. Please check the repository.');
+setLoading(false);
+}
+};
+
+    fetchReadme();
+
+}, []);
+
+const renderMarkdown = (markdown) => {
+return markdown
+.replace(/^# (._$)/gim, '<h1>$1</h1>')
+.replace(/^## (._$)/gim, '<h2>$1</h2>')
+      .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+      .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+      .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+      .replace(/```bash([\s\S]*?)```/gim, '<pre><code class="language-bash">$1</code></pre>')
+      .replace(/```([\s\S]*?)```/gim, '<pre><code>$1</code></pre>')
+      .replace(/`([^`]*)`/gim, '<code>$1</code>')
+      .replace(/!\[([^\]]*)\]\(([^)]*)\)/gim, (match, alt, src) => {
+        const absoluteSrc = src.startsWith('http') 
+          ? src 
+          : `https://raw.githubusercontent.com/masumi-network/kodosumi/main/${src}`;
+        return `<img src="${absoluteSrc}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; margin: 10px 0;" />`;
+})
+.replace(/\[([^\]]_)\]\(([^)]_)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #16A34A; text-decoration: underline;">$1</a>')
+      .replace(/^\- (.*$)/gim, '<li>$1</li>')
+      .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
+.replace(/\n/gim, '<br>');
+};
+
+if (loading) {
+return (
+
+<div style={{ padding: "20px", textAlign: "center" }}>
+  <p>🔄 Loading latest content from GitHub...</p>
+</div>
+); }
+
+return (
+
+<div>
+  <Note>
+    📡 This content is dynamically loaded from the{" "}
+    <a
+      href="https://github.com/masumi-network/kodosumi/blob/main/README.md"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Kodosumi GitHub repository
+    </a>{" "}
+    and updates automatically.
+  </Note>
+  <div
+    style={{
+      lineHeight: "1.6",
+      fontFamily: "inherit",
+    }}
+    dangerouslySetInnerHTML={{
+      __html: renderMarkdown(content),
+    }}
+  />
+</div>
+); };
+
+<GitHubReadme />

@@ -1,36 +1,31 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Kodosumi",
+  "description": "Runtime environment for managing and executing agentic services at scale",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#C4FE0A",
+    "light": "#C4FE0A",
+    "dark": "#9FCC08"
   },
-  "favicon": "/favicon.svg",
+  "backgroundImage": "/images/gradient-bg.svg",
+  "favicon": "logo/favicon.png",
   "navigation": {
     "tabs": [
       {
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
+            "group": "Overview",
+            "pages": ["index", "kodosumi-overview", "why-kodosumi", "concepts"]
           },
           {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
+            "group": "Getting Started",
+            "pages": ["develop", "config", "forms", "lifecycle"]
+          },
+          {
+            "group": "Deploy on Kodosumi",
+            "pages": ["quickstart", "deploy", "admin-panel"]
           }
         ]
       },
@@ -39,9 +34,7 @@
         "groups": [
           {
             "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "pages": ["api-reference/introduction"]
           },
           {
             "group": "Endpoint Examples",
@@ -58,45 +51,64 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "GitHub Repository",
+          "href": "https://github.com/masumi-network/kodosumi",
+          "icon": "github"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Official Website",
+          "href": "https://www.kodosumi.io",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Examples",
+          "href": "https://github.com/masumi-network/kodosumi-examples",
+          "icon": "code"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logo_black.png",
+    "dark": "/logo/logo_white.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Website",
+        "href": "https://www.kodosumi.io"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Get Started",
+      "href": "https://github.com/masumi-network/kodosumi-examples"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/masumi-network/kodosumi",
+      "website": "https://www.kodosumi.io"
     }
+  },
+  "typography": {
+    "headings": "Inter",
+    "body": "Inter"
+  },
+  "metadata": {
+    "og:site_name": "Kodosumi Documentation",
+    "og:description": "Runtime environment for managing and executing agentic services at scale",
+    "og:image": "/images/hero-dark.png",
+    "twitter:site": "@kodosumi"
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/masumi-network/kodosumi"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://github.com/masumi-network/kodosumi-examples"
   }
 }

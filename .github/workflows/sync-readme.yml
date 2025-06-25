@@ -1,0 +1,40 @@
+name: Sync README from Kodosumi repo
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  sync-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Fetch README from kodosumi repo
+        run: |
+          curl -s https://raw.githubusercontent.com/masumi-network/kodosumi/main/README.md > temp_readme.md
+          
+      - name: Update snippet with README content
+        run: |
+          echo "# kodosumi" > snippets/github-readme.mdx
+          echo "" >> snippets/github-readme.mdx
+          echo "<Note>" >> snippets/github-readme.mdx
+          echo "This content is automatically synchronized from the [GitHub repository](https://github.com/masumi-network/kodosumi/blob/main/README.md). Last updated: $(date)" >> snippets/github-readme.mdx
+          echo "</Note>" >> snippets/github-readme.mdx
+          echo "" >> snippets/github-readme.mdx
+          tail -n +2 temp_readme.md >> snippets/github-readme.mdx
+          rm temp_readme.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add snippets/github-readme.mdx
+          git diff --staged --quiet || git commit -m "Auto-sync README from kodosumi repo"
+          git push
