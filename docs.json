@@ -25,7 +25,7 @@
           },
           {
             "group": "Deploy on Kodosumi",
-            "pages": ["quickstart", "deploy", "admin-panel"]
+            "pages": ["deploy", "admin-panel"]
           }
         ]
       },
