@@ -30,20 +30,11 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "koco CLI",
         "groups": [
           {
-            "group": "API Documentation",
-            "pages": ["api-reference/introduction"]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "CLI Reference",
+            "pages": ["cli-reference/introduction"]
           }
         ]
       }
