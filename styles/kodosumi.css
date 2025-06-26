@@ -90,3 +90,8 @@ th {
 img {
   border-radius: 8px;
 }
+
+/* Logo should not have border radius */
+.nav-logo {
+  border-radius: 0 !important;
+}
