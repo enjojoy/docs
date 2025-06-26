@@ -59,20 +59,15 @@ export const GitHubDoc = () => {
   }
 
   return (
-    <div>
-      <Note>
-        📡 This content is dynamically loaded from the <a href="https://github.com/masumi-network/kodosumi/blob/main/docs/lifecycle.md" target="_blank" rel="noopener noreferrer">Kodosumi GitHub repository</a> and updates automatically.
-      </Note>
-      <div 
-        style={{ 
-          lineHeight: '1.6',
-          fontFamily: 'inherit'
-        }}
-        dangerouslySetInnerHTML={{ 
-          __html: renderMarkdown(content) 
-        }}
-      />
-    </div>
+    <div 
+      style={{ 
+        lineHeight: '1.6',
+        fontFamily: 'inherit'
+      }}
+      dangerouslySetInnerHTML={{ 
+        __html: renderMarkdown(content) 
+      }}
+    />
   );
 };
 
